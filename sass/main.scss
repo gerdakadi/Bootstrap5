@@ -1,0 +1,173 @@
+$primary: #6a2aca;   
+$light: #ffffff;  
+$secondary: #ab7adca9;
+$light-accent: #f8f9fa;
+$muted-light: #aaa7a7;
+
+// import Bootstrap functions & variables BEFORE overriding maps
+@import "../node_modules/bootstrap/scss/_functions";
+@import "../node_modules/bootstrap/scss/_variables";
+
+// Custom colors
+$custom-theme-colors: (
+  "altlight": #2a2a2a,  
+  "altdark": #0d0d0d,  
+  "accent": #c4c3c3
+);
+
+$light-text: #f8f9fa;  
+$muted-light: #d1d1d1;
+
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+
+// Page base styles
+
+body {
+  background-color: #1c1c1c;
+  color: $light-text;
+}
+
+// Links
+a {
+  color: $primary;
+  &:hover {
+    color: lighten($primary, 15%);
+    text-decoration: none;
+  }
+}
+
+
+// Dark sections
+
+.bg-dark,
+.bg-secondary,
+.offcanvas,
+.modal-content {
+  background-color: #2b2b2b !important;
+  color: $light-text;
+
+  // only style normal links, NOT buttons
+  a:not(.btn) {
+    color: $primary;
+  }
+
+  .text-muted {
+    color: $muted-light;
+  }
+}
+
+
+// Light sections headings / lead text readability
+
+section.bg-light {
+  h2,
+  p.lead {
+    color: #212529; // dark gray
+  }
+}
+
+
+// Accordion / Topics section
+
+#topics {
+  background-color: $light;  
+  color: $light-accent;       
+
+  .text-muted {
+    color: $muted-light;
+  }
+
+  .accordion-button {
+    background-color: map-get($custom-theme-colors, "altlight"); 
+    color: $light-accent;
+
+    &:not(.collapsed) {
+      background-color: map-get($custom-theme-colors, "altdark"); 
+      color: $light-accent;
+    }
+  }
+
+  .accordion-body {
+    background-color: map-get($custom-theme-colors, "altlight");
+    color: $light-accent;
+  }
+}
+
+
+.bg-card-gray {
+  background-color: #616161 !important; 
+
+ 
+  .card-body {
+    color: $light-text;
+
+    h4, h5, h6, p, span, li {
+      color: $light-text;
+    }
+
+    .text-muted, .card-subtitle {
+      color: lighten($muted-light, 30%);
+    }
+
+    
+    a.btn {
+      color: inherit;
+    }
+  }
+}
+
+
+.text-card-light {
+  color: $light-text !important;  
+}
+
+.text-card-muted {
+  color: lighten($muted-light, 30%) !important;  
+}
+
+a.btn-primary,
+button.btn-primary {
+  color: $light !important; 
+}
+
+a.btn-primary:hover,
+button.btn-primary:hover {
+  color: $light !important;
+  background-color: darken($primary, 7%) !important;
+  border-color: darken($primary, 10%) !important;
+}
+
+a.btn-outline-primary {
+  color: $light !important;
+  border-color: $primary;
+
+  &:hover {
+    background-color: $primary !important;
+    color: $light !important;
+    border-color: $primary !important;
+  }
+}
+
+  .list-group-item {
+    background-color: #4a4a4a !important; // slightly lighter than container
+    border-color: #5a5a5a;                // subtle border
+    color: $light-text;
+
+    h5, p, small {
+      color: $light-text; // ensure text inside items is readable
+    }
+  }
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+}
